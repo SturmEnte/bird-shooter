@@ -6,9 +6,13 @@ namespace bird_shooter
         private static int WIDTH = 800;
         private static int HEIGHT = 500;
 
+        private static int DIRECTION_COUNTER_MIN = 1;
+        private static int DIRECTION_COUNTER_MAX = 10;
+
         private Random random;
 
         private Direction targetDirection;
+        private int directionCounter; // Saves how often the direction should be used
 
         public MainWindow()
         {
@@ -18,11 +22,21 @@ namespace bird_shooter
 
             int[] position = generateRandomCoords();
             target.Location = new Point(position[0], position[1]);
+
+            directionCounter = 0;
         }
 
         public void gameTimer_Tick(object sender, EventArgs e)
         {
+            if(directionCounter == 0)
+            {
+                targetDirection = selectRandomDirection();
+                directionCounter = random.Next(DIRECTION_COUNTER_MIN, DIRECTION_COUNTER_MAX);
+            }
 
+
+
+            directionCounter--;
         }
 
         public void target_Click(object sender, EventArgs e)
@@ -71,6 +85,10 @@ namespace bird_shooter
                     break;
                 case 8:
                     direction = Direction.UpLeft;
+                    break;
+                default:
+                    // This case should not be possible
+                    direction = Direction.Up;
                     break;
             }
 

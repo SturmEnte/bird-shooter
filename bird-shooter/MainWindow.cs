@@ -13,6 +13,9 @@ namespace bird_shooter
             InitializeComponent();
 
             random = new Random();
+
+            int[] position = generateRandomCoords();
+            target.Location = new Point(position[0], position[1]);
         }
 
         public void gameTimer_Tick(object sender, EventArgs e)
@@ -22,7 +25,8 @@ namespace bird_shooter
 
         public void target_Click(object sender, EventArgs e)
         {
-            
+            int[] position = generateRandomCoords();
+            target.Location = new Point(position[0], position[1]);
         }
 
         private int[] generateRandomCoords()

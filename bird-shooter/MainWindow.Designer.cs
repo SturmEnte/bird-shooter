@@ -46,6 +46,7 @@
             target.Size = new Size(50, 50);
             target.TabIndex = 0;
             target.TabStop = false;
+            target.Click += this.target_Click;
             // 
             // MainWindow
             // 

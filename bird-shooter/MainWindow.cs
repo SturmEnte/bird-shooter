@@ -8,6 +8,8 @@ namespace bird_shooter
 
         private Random random;
 
+        private Direction targetDirection;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,5 +40,53 @@ namespace bird_shooter
 
             return coords;
         }
+
+        private Direction selectRandomDirection()
+        {
+            int randomNumber = random.Next(1, 8);
+            Direction direction;
+
+            switch(randomNumber)
+            {
+                case 1:
+                    direction = Direction.Up;
+                    break;
+                case 2:
+                    direction = Direction.UpRight;
+                    break;
+                case 3:
+                    direction = Direction.Right;
+                    break;
+                case 4:
+                    direction = Direction.DownRight;
+                    break;
+                case 5:
+                    direction = Direction.Down;
+                    break;
+                case 6:
+                    direction = Direction.DownLeft;
+                    break;
+                case 7:
+                    direction = Direction.Left;
+                    break;
+                case 8:
+                    direction = Direction.UpLeft;
+                    break;
+            }
+
+            return direction;
+        }
+    }
+
+    enum Direction
+    {
+        Up,
+        UpRight,
+        UpLeft,
+        Right,
+        DownRight,
+        Down,
+        DownLeft,
+        Left,
     }
 }

@@ -30,24 +30,38 @@
         {
             components = new System.ComponentModel.Container();
             gameTimer = new System.Windows.Forms.Timer(components);
+            target = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)target).BeginInit();
             SuspendLayout();
             // 
             // gameTimer
             // 
-            gameTimer.Tick += this.gameTimer_Tick;
+            gameTimer.Tick += gameTimer_Tick;
+            // 
+            // target
+            // 
+            target.Image = Properties.Resources.target;
+            target.Location = new Point(360, 177);
+            target.Name = "target";
+            target.Size = new Size(50, 50);
+            target.TabIndex = 0;
+            target.TabStop = false;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(784, 461);
+            Controls.Add(target);
             Name = "MainWindow";
-            Text = "Form1";
+            Text = "MainWindow";
+            ((System.ComponentModel.ISupportInitialize)target).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
+        private PictureBox target;
     }
 }

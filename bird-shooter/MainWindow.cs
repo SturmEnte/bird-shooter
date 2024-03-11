@@ -28,15 +28,20 @@ namespace bird_shooter
 
         public void gameTimer_Tick(object sender, EventArgs e)
         {
-            if(directionCounter == 0)
+            if(directionCounter <= 0)
             {
-                targetDirection = selectRandomDirection();
-                directionCounter = random.Next(DIRECTION_COUNTER_MIN, DIRECTION_COUNTER_MAX);
+                selectNewTargetDirection();
             }
 
 
 
             directionCounter--;
+        }
+
+        private void selectNewTargetDirection()
+        {
+            targetDirection = selectRandomDirection();
+            directionCounter = random.Next(DIRECTION_COUNTER_MIN, DIRECTION_COUNTER_MAX);
         }
 
         public void target_Click(object sender, EventArgs e)
